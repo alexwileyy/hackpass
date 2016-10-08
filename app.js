@@ -37,11 +37,10 @@ app.post('/create_event', function (req, res) {
            //Convert to JSON
            //  const data = JSON.parse(body).data[0];
             const data = JSON.parse(body);
-            console.log(data);
             //Call addUsers mongo
-            db.addEvent(data);
-            res.sendFile(path.join(__dirname,'create-event.html'), (err) => {
-                if(err) console.log(err);
+            db.addEvent(data, function(event){
+                const id = JSON.stringify(event._id);
+                res.redirect('event/?event_id=' + id);
             });
         });
 
@@ -52,16 +51,19 @@ app.post('/create_event', function (req, res) {
     }
 });
 
-app.get('/test', function(req,res){
-    res.sendFile(path.join(__dirname,'create-event.html'), (err) => {
-        if(err) console.log(err);
-    });
+app.get('/event', function(req, res){
+   res.sendFile(path.join(__dirname + '/create-event.html'), (err) =>{
+       if(err){
+           console.log(err)
+       }
+   })
 });
 
 //Standard entry point.
 app.get('/', function(req, res){
     res.sendFile(path.join(__dirname+'/index.html'));
 });
+
 
 
 app.listen(9001, function(){
