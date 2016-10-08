@@ -7,24 +7,38 @@
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <img src="logo.svg" alt="HackPass" />
+    <header class="padding">
+        <img src="assets/logo.svg" alt="HackPass" />
     </header>
-    <section>
+    <section id="eventPic"><img src="assets/swag.jpg" /></section>
+    <section class="main padding">
         <article>
 
-            test
+            <h1>Event Name:</h1>
+            <form id="createEventForm" action="ENDPOINT." method="POST">
+                <input id="0" type="text"></br>
+                <div style="width: 120px;  margin: 0 auto;">
+                    <input type="submit" href="#" class="myButton"></input>
+                    </form>
+                </div>
         </article>
     </section>
-    <section>
+    <section class="main padding shiftup">
         <article>
-
-            test
+            <h2 class="titleBar">Login</h2>
+            <h1>Event ID:</h1>
+            <form id="createEventForm" action="ENDPOINT." method="POST">
+                <input id="0" type="text"></br>
+                <div style="width: 120px;  margin: 0 auto;">
+                    <input type="submit" href="#" class="myButton"></input>
+            </form>
+            </div>
         </article>
     </section>
-        <script>
+    <script>
             function getQueryVariable(variable)
             {
                 var query = window.location.search.substring(1);
