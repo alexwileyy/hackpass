@@ -1,0 +1,84 @@
+@import "theme";
+
+body{
+  background-image: url('/images/school.png');
+  background-repeat: repeat;
+}
+#logo{
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  padding: 30px 0px;
+  img{
+    height: 80%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+#users{
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 4px;
+  box-shadow: 0px 0px 3px rgba(0,0,0,0.2);
+  width: 60%;
+  margin: auto;
+  .panel-header{
+    h2{
+      text-align: center;
+      font-weight: 500;
+      font-size: 30px;
+      padding: 20px 0px;
+    }
+  }
+  .panel-content{
+    text-align: center;
+    img{
+      width: 50px;
+      margin-top: 30px;
+    }
+    h3{
+      font-weight: 300;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+    .user-item{
+      max-height: 80px;
+      background-color: rgba(255,255,255,0.3);
+      height: 80px;
+      border-color: #eeeeee;
+      border-width: 1px 0px;
+      border-style: solid;
+      display: flex;
+      .user-left{
+        width: 80%;
+        text-align: left;
+        h3{
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%);
+          margin-left: 2em;
+        }
+      }
+      .user-right{
+        width: 20%;
+        border-width: 0px 0px 0px 2px;
+        border-color: rgba(0,0,0,0.1);
+        border-style: solid;
+        overflow: hidden;
+        button{
+          height: 100%;
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+        button:hover{
+          background-color: mediumspringgreen;
+          color: white;
+        }
+      }
+    }
+  }
+
+}

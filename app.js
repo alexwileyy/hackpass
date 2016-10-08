@@ -15,6 +15,7 @@ var secrets = require('./secrets.js'); // import API keys etc
 var appID = secrets.appID;
 var secret = secrets.secret;
 
+
 //Share the public folder.
 app.use(express.static('public'));
 
@@ -75,8 +76,9 @@ app.post('/create_event', (req, res) => {
            //Convert to JSON
            //  const data = JSON.parse(body).data[0];
             const data = JSON.parse(body).data;
+
             //Call addUsers mongo
-            db.addEvent(data, function(event){
+            db.addEvent(data, appID, function(event){
                 const id = String(event._id);
                 res.redirect('event/?event_id=' + id);
             });

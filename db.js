@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 
 //User Schema
 var eventSchema = new Schema({
+    appId: String,
     eventName: String,
     created: Date.parse(),
     attendees: Array,
@@ -13,9 +14,10 @@ var eventSchema = new Schema({
 //User Table
 var eventTable = mongoose.model('Events', eventSchema);
 
-module.exports.addEvent = (data, cb) => {
+module.exports.addEvent = (data, appID, cb) => {
 
     const eventData = {
+        appId: appID,
         eventName: 'Hack Pass',
         created: new Date(),
         attendees: data
