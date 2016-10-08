@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/alexwileyy/hackpass/issues"
   },
-  "homepage": "https://github.com/alexwileyy/hackpass#readme"
+  "homepage": "https://github.com/alexwileyy/hackpass#readme",
+  "dependencies": {
+    "mongoose": "^4.6.3"
+  }
 }
