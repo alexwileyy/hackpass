@@ -5,6 +5,10 @@ var twilio_number = '+441202286170';
 var twilio = require('twilio');
 var twilio_client = new twilio.RestClient(twilio_accountSid, twilio_authToken);
 
+////////////////////////////////////////////////////////////////////////////////
+
+var prompt = require('prompt');
+
 
 function testMessage(mobileNumber){
     if (mobileNumber == undefined) mobileNumber = '+447850546917';
@@ -41,6 +45,25 @@ function multiMessage(jsonArray, message){
     });
 }
 
+function messageIncrementer(jsonArray, message, increment){
+    return{
+        jsonArray : jsonArray,
+        message : message,
+        increment : increment,
+
+        sendMessage : function(){
+            if (this.jsonArray.length > this.increment) {
+                multiMessage(jsonArray.splice(0,this.increment), this.message);
+                return true;
+            }else{
+                multiMessage(jsonArray, this.message);
+                return false;
+            }
+        }
+    };
+
+}
+
 //testMessage(undefined);
 /*
 multiMessage(
@@ -52,3 +75,29 @@ multiMessage(
     "Hooray for multiple messages"
 );
 */
+
+/*
+var mi = messageIncrementer(
+    [
+        { mobileNumber : '+447850546917' },
+        { mobileNumber : '+447850546917' },
+        { mobileNumber : '+447850546917'}
+    ],
+    "Yay incrementing",
+    2
+);
+
+
+prompt.start();
+
+function foodInvite(){
+    console.log("Press Enter Key to invite people for food");
+    prompt.get(["Press Enter"], function(err, result){
+        if(mi.sendMessage())foodInvite();
+    });
+}
+
+foodInvite();
+
+*/
+
