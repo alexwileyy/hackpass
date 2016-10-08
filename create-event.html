@@ -46,16 +46,15 @@
                 for (var i=0;i<vars.length;i++) {
                     var pair = vars[i].split("=");
                     if(pair[0] == variable){
-                        var string = pair[1];
-                        var string1 = string.replace("%22", "");
-                        var string2 = string1.replace("%22", "");
-                        return string2;
+                        return string = pair[1];
+
                     }
                 }
                 return(false);
             }
 
             var eventId = getQueryVariable('event_id');
+            console.log(eventId);
         </script>
     </body>
 

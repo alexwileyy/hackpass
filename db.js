@@ -30,28 +30,33 @@ module.exports.addEvent = (data, cb) => {
     });
 };
 
-const changeEventTitle = (data) => {
+const changeEventTitle = (data, cb) => {
 
     const search = {
         _id: data
     };
-    eventTable.findOne(search, 'eventName', function(err, event){
-        if(err){
-            console.log(err);
-        }
-        console.log(event);
-        // event.eventName = newName;
-        // console.log(event.name);
-        // event.save(function(err){
-        //     if(err){
-        //         console.log(err)
-        //     }
-        // });
+
+    eventTable.update(search, {eventName: data}, {}, function(err, result) {
+      cb();
     });
 };
 
+module.exports.getEvent = function(eventId, cb) {
+  eventTable.findOne({_id: eventId}, function(err, event){
+      if(err){
+          console.log(err);
+      }
+      cb(event);
+  });
+};
+
+module.exports.getUser = function(userId, cb) {
+  eventTable.findOne({'attendees': {$elemMatch: {id: userId}}}, function(err, user){
+      if(err){
+          console.log(err);
+      }
+      cb(user);
+  });
+};
 
 // var exports = module.exports = {};
-
-
-
