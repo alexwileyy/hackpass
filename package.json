@@ -4,7 +4,7 @@
   "description": "A hackpass for hackathon attendees and organisers",
   "main": "app.js",
   "scripts": {
-    "test": "npm start"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
