@@ -16,14 +16,6 @@
                 <img src="/images/mail.svg"/>
                 <h3>Message a user</h3>
                 <div id="user-list">
-                    <div class="user-item">
-                        <div class="user-left">
-                            <h3>Name</h3>
-                        </div>
-                        <div class="user-right">
-                            <button>Message</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -70,43 +62,36 @@
                 //Add page name
                 $('#hackathon-name').html(data.eventName);
                 //Add users
+                console.log(data);
                 const attendee = data.attendees;
-                const userList = $('.user-list');
+                const userList = document.getElementById('user-list');
                 console.log('Attendee: ' + attendee);
                 attendee.forEach(processMembers);
 
                 function processMembers(item, i, array) {
                     const userItem = document.createElement("DIV");
-                    userList.append(userItem);
+                    userItem.className += 'user-item';
                     const userLeft = document.createElement("DIV");
+                    userLeft.className += 'user-left';
                     const userRight = document.createElement("DIV");
-                    const userLeftH3 = document.createElement("H3");
-                    const userRightButton = document.createElement("BUTTON");
-                    console.log(array[i].first_name);
-                    userLeftH3.innerText = array[i].first_name;
+                    userRight.className += 'user-right';
                     userItem.appendChild(userLeft);
                     userItem.appendChild(userRight);
-                    userLeft.appendChild(userLeftH3);
-                    userRight.appendChild(userRightButton);
+                    const name = document.createElement("H3");
+                    name.innerText = array[i].first_name;
+                    const userRightLink = document.createElement("A");
+                    userRightLink.href = '/call/' + data._id;
+                    const button = document.createElement("BUTTON");
+                    button.innerText = 'Message';
+                    userRightLink.appendChild(button);
+                    userLeft.appendChild(name);
+                    userRight.appendChild(userRightLink);
+                    console.log(userItem);
+                    userList.appendChild(userItem);
                 }
 
             }
 
-            function test(){
-                const userItem = document.createElement("DIV");
-                const userLeft = document.createElement("DIV");
-                userLeft.className += 'userLeft';
-                const userRight = document.createElement("DIV");
-                userRight.className += 'userRight';
-                userItem.appendChild(userLeft);
-                userItem.appendChild(userRight);
-                const name = document.createElement("H3");
-                name.innerText = array[i].first_name;
-                const button = document.createElement("BUTTON");
-                userLeft.appendChild(name);
-                userRight.appendChild(button);
-                console.log(userItem);
-            }
             test();
         </script>
     </body>
