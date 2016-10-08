@@ -10,6 +10,9 @@ app.use(bodyParser.urlencoded({extended:false}));
 //Imported internal files.
 const db = require('./db.js');
 
+//Twillio
+const twill = require('./twiliocalls.js');
+
 // import external files
 var secrets = require('./secrets.js'); // import API keys etc
 var appID = secrets.appID;
@@ -22,6 +25,11 @@ app.use(express.static('public'));
 //Standard entry point.
 app.get('/', function(req, res){
     res.sendFile(path.join(__dirname+'/index.html'));
+});
+
+//Twillio integration
+app.get('/call/:id', function(req, res){
+
 });
 
 //Follows the home page when a valid APP ID and SECRET code have been entered.

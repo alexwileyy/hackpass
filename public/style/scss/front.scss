@@ -3,18 +3,23 @@ body{
   background-image: url('../../images/school.png');
   background-repeat: repeat;
 }
-.login{
+
+.page-content{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  overflow: hidden;
+}
+
+.login, .register{
+  display: block;
+}
+.register{
   width: 40%;
   height: 340px;
   min-height: 200px;
   margin: auto;
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  text-align: center;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-  border-radius: 3px;
-  background-color: rgba(255,255,255,0.6);
   .container{
     position: relative;
     min-height: 300px;
@@ -63,4 +68,53 @@ body{
       }
     }
   }
+}
+
+.login{
+  padding: 20px 0px;
+  h3{
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 2px;
+  }
+  form{
+    text-align: center;
+    width: 100%;
+    margin: 15px auto;
+    input{
+      display: block;
+      width: 80%;
+      padding: 10px;
+      border-radius: 3px;
+      -webkit-appearance: none;
+      border: 1px solid rgba(0,0,0,0.1);
+      margin: 10px auto;
+    }
+    #submitLogin{
+      width: 40%;
+      font-size: 14px;
+      text-transform: uppercase;
+      border: 1px solid rgba(0,0,0,0.1);
+      background-color: transparent;
+      margin-top: 20px;
+      color: rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    #submitLogin:hover{
+      letter-spacing: 2px;
+      background-color: mediumspringgreen;
+      color: white;
+      border: none;
+    }
+  }
+}
+
+.box{
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  border-radius: 3px;
+  background-color: rgba(255,255,255,0.6);
+  width: 40%;
+  margin: 10px auto;
 }
