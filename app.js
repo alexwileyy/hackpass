@@ -36,7 +36,7 @@ app.post('/create_event', function (req, res) {
            }
            //Convert to JSON
            //  const data = JSON.parse(body).data[0];
-            const data = JSON.parse(body);
+            const data = JSON.parse(body).data;
             //Call addUsers mongo
             db.addEvent(data, function(event){
                 const id = JSON.stringify(event._id);
