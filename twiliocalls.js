@@ -52,14 +52,27 @@ module.exports.messageIncrementer = (jsonArray, message, increment) => {
 
         sendMessage : function(){
             if (this.jsonArray.length > this.increment) {
-                module.export.multiMessage(jsonArray.splice(0,this.increment), this.message);
+                module.exports.multiMessage(jsonArray.splice(0,this.increment), this.message);
                 return true;
             }else{
-                module.export.multiMessage(jsonArray, this.message);
+                module.exports.multiMessage(jsonArray, this.message);
                 return false;
             }
         }
     };
+
+}
+
+module.exports.autoMessageIncrementer = (jsonArray, message, increment, minutes) => {
+   
+    return{
+        minutes : minutes,
+        messageIncrementer : module.exports.messageIncrementer(jsonArray, message, increment),
+
+        autoMessage : function(){
+            if ( this.messageIncrementer.sendMessage() ) setInterval(autoMessage(), this.minutes * 60 * 1000);
+        }
+    }
 
 }
 
