@@ -1,0 +1,25 @@
+h1, h2, h3, h4, h5, h6{
+  margin: 0px;
+  padding: 0px;
+  font-family: Avenir, sans-serif;
+}
+html, body, section{
+  display: block;
+  margin: 0px;
+  padding: 0px;
+}
+
+a{
+  text-decoration: none;
+}
+
+button{
+  -webkit-appearance: none;
+  padding: 10px 40px;
+  font-size: 18px;
+}
+
+.container{
+  width: 80%;
+  margin: auto;
+}
