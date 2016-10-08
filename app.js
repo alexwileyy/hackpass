@@ -50,6 +50,7 @@ app.get('/profile/user/:id', (req, res) => {
 
 //Get event attendees
 app.post('/event/attendees', (req, res) => {
+    console.log(req.body.eventID);
    db.getEvent(req.body.eventID, (event) => {
        console.log(event);
        res.send(event);
@@ -80,7 +81,7 @@ app.post('/create_event', (req, res) => {
             //Call addUsers mongo
             db.addEvent(data, appID, function(event){
                 const id = String(event._id);
-                res.redirect('event/?event_id=' + id);
+                res.redirect('organiser/?event_id=' + id);
             });
         });
 
