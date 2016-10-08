@@ -32,15 +32,29 @@ app.get('/event', function(req, res){
     })
 });
 
-app.get('/profile', (req, res) => {
+//PROFILE METHODS
+
+app.get('/organiser', (req, res) => {
     res.sendFile(__dirname + '/organiser.html', (err) => {
         if(err) console.log(err)
     });
 });
 
-app.get('/profile/:id', (req, res) => {
-    //Mongo to fetch single user.
+//User Profile Information
+app.get('/profile/user/:id', (req, res) => {
+   db.getUser(req.param.id, (data) => {
+      res.send(data);
+   });
 });
+
+//Get event attendees
+app.post('/event/attendees', (req, res) => {
+   db.getEvent(req.body.eventID, (event) => {
+       console.log(event);
+       res.send(event);
+   })
+});
+
 
 
 // "create_event" route - Bring in the app ID/secret from the Hackathon owner.

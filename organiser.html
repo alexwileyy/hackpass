@@ -26,5 +26,29 @@
                 </div>
             </div>
         </section>
+
+        <script>
+            //Get event title
+
+            var formData =
+            $.ajax({
+                type: 'post',
+                url: 'http://event/attendees',
+                data: formData,
+                xhrFields: {
+                    withCredentials: false
+                },
+                headers: {
+
+                },
+                success: function (data) {
+                    console.log('Success');
+                    console.log(data);
+                },
+                error: function () {
+                    console.log('We are sorry but our servers are having an issue right now');
+                }
+            })
+        </script>
     </body>
 </html>

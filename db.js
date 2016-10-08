@@ -30,20 +30,10 @@ module.exports.addEvent = (data, cb) => {
     });
 };
 
-module.exports.changeEventTitle = (data, cb) => {
+module.exports.changeEventTitle = (data, newTitle, cb) => {
 
-    eventTable.update({_id: data}, {eventName: data}, {}, function(err, result) {
+    eventTable.update({_id: data}, {eventName: newTitle}, {}, function(err, result) {
       cb();
-    });
-};
-
-module.exports.getEventTitle = (eventID, cb) => {
-    eventTable.findOne({_id: eventID}, (err, event) => {
-        if(err){
-            console.log(err);
-        }
-        console.log(event.eventName);
-        cb(event)
     });
 };
 
@@ -65,7 +55,9 @@ module.exports.getUser = function(userId, cb) {
   });
 };
 
+// const getAllUsers = (eventId, cb) => {
+//     eventTable.findOne
+// };
+
+
 // var exports = module.exports = {};
-
-
-getEventTitle('57f8e1152a63b6c087c64513');
