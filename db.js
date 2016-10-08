@@ -39,10 +39,17 @@ const changeEventTitle = (data) => {
         if(err){
             console.log(err);
         }
+        console.log(event);
+        // event.eventName = newName;
+        // console.log(event.name);
+        // event.save(function(err){
+        //     if(err){
+        //         console.log(err)
+        //     }
+        // });
     });
 };
 
-changeEventTitle('57f8e1152a63b6c087c64513');
 
 // var exports = module.exports = {};
 
