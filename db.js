@@ -3,20 +3,21 @@ mongoose.connect('localhost:27017');
 
 var Schema = mongoose.Schema;
 
-var UserSchema = new Schema({
-    user: String,
-    email: String
+//User Schema
+var eventSchema = new Schema({
+    eventName: String,
+    createdOn: Date,
+
 });
 
-var userTable = mongoose.model('User', UserSchema);
+//User Table
+var eventTable = mongoose.model('Events', eventSchema);
 
+function addUser(data){
 
-function addUser()
-var newUser = new userTable({ user: 'Zildjian', email: 'alex' });
+    userTable.collection.insertMany(data, function(err, r){
+       console.log(r + ' record added');
+    });
+}
 
-newUser.save(function(err){
-   if(err){
-       console.log(err)
-   }
-   console.log('yay')
-});
+addUser(data);

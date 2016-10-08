@@ -1,1 +1,28 @@
-<h1>Hack Pass</h1>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/style/css/front.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="login">
+            <div class="container">
+                <div class="login-content">
+                    <img src="public/images/logo.png"/>
+                    <form id="send" method="post" action="http://localhost:9001/create_event">
+                        <input id="appID" name="appID" type="text" placeholder="Enter APP ID"/>
+                        <input id="secret" name="secret" type="password" placeholder="Enter APP Secret Ket"/>
+                        <input id="submit" onclick="return direct()" name="submit" type="submit" placeholder="Create Event"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            function direct() {
+                setTimeout(function(){
+                    window.location.href = 'http://localhost:9001';
+                    return false;
+                }, 2000);
+            }
+        </script>
+    </body>
+</html>
