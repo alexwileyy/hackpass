@@ -6,18 +6,32 @@ var Schema = mongoose.Schema;
 //User Schema
 var eventSchema = new Schema({
     eventName: String,
-    createdOn: Date,
-
+    created: Date.parse(),
+    attendees: Array,
 });
 
 //User Table
 var eventTable = mongoose.model('Events', eventSchema);
 
-function addUser(data){
+module.exports.addEvent = function(data) {
 
-    userTable.collection.insertMany(data, function(err, r){
-       console.log(r + ' record added');
-    });
-}
+    const eventData = {
+        eventName: 'Hack Pass',
+        created: new Date(),
+        attendees: data
+    };
 
-addUser(data);
+    const newEvent = new eventTable(eventData);
+    newEvent.save((err) => {
+        if (err) {
+            console.log(err)
+        }
+    })
+};
+
+
+
+// var exports = module.exports = {};
+
+
+
