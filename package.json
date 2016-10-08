@@ -1,0 +1,19 @@
+{
+  "name": "hackpass",
+  "version": "1.0.0",
+  "description": "A hackpass for hackathon attendees and organisers",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexwileyy/hackpass.git"
+  },
+  "author": "Alex Wiley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexwileyy/hackpass/issues"
+  },
+  "homepage": "https://github.com/alexwileyy/hackpass#readme"
+}
