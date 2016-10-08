@@ -98,7 +98,7 @@ app.post('/create_event', (req, res) => {
         if(event) {
           res.redirect('organiser/?event_id=' + req.body.appIDLogin);
         } else {
-          res.status(400).send('No such event!');
+          res.status(404).send('No such event!');
         }
       });
     }
