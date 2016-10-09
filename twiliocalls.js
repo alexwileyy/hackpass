@@ -44,6 +44,7 @@ module.exports.directMessage = (json, message) => {
 
 module.exports.multiMessage = (jsonArray, message) => {
 
+    console.log(jsonArray);
     jsonArray.forEach(function(mobileNumber){
         twilio_client.messages.create({
             body: message,

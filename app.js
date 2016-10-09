@@ -48,19 +48,20 @@ app.post('/text/:id', function(req, res){
                 numbers.push(array[i].phone_number);
               // console.log(array[i].phone_number);
             }
+            return numbers;
         }
 
         if(req.body.messageOp == 'broadcast'){
             //Send JSON with name and number over.
             console.log('broadcast');
-            const twillDataBroadcast = numbers;
+            const twillDataBroadcast = getNumbers(data);
             twill.multiMessage(twillDataBroadcast, req.body.message);
 
         }
         if(req.body.messageOp == 'increment'){
             //Send JSON with name and number over.
             console.log('increment');
-            const twillDataIncrement = numbers;
+            const twillDataIncrement = getNumbers(data);
             twill.messageIncrementer(twillDataIncrement, req.body.message, 4);
         }
         if(req.body.messageOp == 'individual'){
