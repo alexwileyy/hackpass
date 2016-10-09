@@ -103,6 +103,14 @@ app.post('/create_event', (req, res) => {
             });
         });
 
+    } else if(req.body.appIDLogin) {
+      db.getEvent(req.body.appIDLogin, function(event) {
+        if(event) {
+          res.redirect('organiser/?event_id=' + req.body.appIDLogin);
+        } else {
+          res.status(404).send('No such event!');
+        }
+      });
     }
     else{
         res.status(400).send('Bad Request');
