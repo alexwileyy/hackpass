@@ -44,10 +44,10 @@ module.exports.directMessage = (json, message) => {
 
 module.exports.multiMessage = (jsonArray, message) => {
 
-    jsonArray.forEach(function(json){
+    jsonArray.forEach(function(mobileNumber){
         twilio_client.messages.create({
             body: message,
-            to: json.mobileNumber,
+            to: mobileNumber,
             from: twilio_number // From a valid Twilio number
         }, function(err, message) {
 
@@ -91,6 +91,29 @@ module.exports.autoMessageIncrementer = (jsonArray, message, increment, minutes)
     }
 
 }
+
+module.exports.specialDietMessage = (jsonArray, message, diet) => {
+
+    jsonArray.forEach(function(json){
+        console.log(json);
+        /*
+        twilio_client.messages.create({
+            body: message,
+            to: json.mobileNumber,
+            from: twilio_number // From a valid Twilio number
+        }, function(err, message) {
+
+            if (err) {
+                console.log(err);
+            }else{
+                console.log(message.sid);
+            }
+        });
+        */
+    });
+}
+
+
 
 //testMessage(undefined);
 /*
