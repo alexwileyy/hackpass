@@ -18,7 +18,7 @@ module.exports.addEvent = (data, appID, cb) => {
 
     const eventData = {
         appId: appID,
-        eventName: 'Hack Pass',
+        eventName: 'Hack UPC',
         created: new Date(),
         attendees: data
     };

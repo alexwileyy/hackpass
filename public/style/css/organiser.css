@@ -40,11 +40,19 @@ body {
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
   width: 60%;
   margin: 30px auto 60px auto; }
-  #users .panel-header h2 {
-    text-align: center;
-    font-weight: 500;
-    font-size: 30px;
-    padding: 20px 0px; }
+  #users .panel-header {
+    position: relative; }
+    #users .panel-header h2 {
+      text-align: center;
+      font-weight: 500;
+      font-size: 30px;
+      padding: 20px 0px; }
+    #users .panel-header img {
+      position: absolute;
+      top: 50%;
+      left: 97%;
+      transform: translate(-100%, -50%);
+      width: 30px; }
   #users .panel-content {
     text-align: center; }
     #users .panel-content img {
