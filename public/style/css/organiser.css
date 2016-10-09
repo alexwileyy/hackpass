@@ -47,7 +47,7 @@ body {
       font-weight: 500;
       font-size: 30px;
       padding: 20px 0px; }
-    #users .panel-header img {
+    #users .panel-header #profile {
       position: absolute;
       top: 50%;
       left: 97%;
@@ -141,5 +141,24 @@ body {
       background-color: mediumspringgreen;
       color: white;
       border: none; }
+
+.button {
+  width: 40%;
+  font-size: 14px;
+  text-transform: uppercase;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  margin-top: 30px;
+  color: rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin-top: 0px;
+  margin-bottom: 10px; }
+
+.button:hover {
+  letter-spacing: 2px;
+  background-color: mediumspringgreen;
+  color: white;
+  border: none; }
 
 /*# sourceMappingURL=organiser.css.map */
