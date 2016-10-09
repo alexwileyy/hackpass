@@ -1,7 +1,10 @@
 <html>
     <head>
+        <title>Organiser</title>
         <link rel="stylesheet" type="text/css" href="/style/css/organiser.css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="http://hackthemidlands.com/style/js/featherlight.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/featherlight/1.5.0/featherlight.min.css"/>
     </head>
     <body>
         <section id="logo">
@@ -20,6 +23,25 @@
             </div>
         </section>
 
+        <div class="lightboxes">
+            <div id="call-lightbox">
+                <h1>Message Centre</h1>
+                <form id="send" method="post" action="http://localhost:9001/text">
+                    <div class="checkbox">
+                        <input type="radio" name="vehicle" value="Bike">Send Broadcast Call<br>
+                    </div>
+                    <div class="checkbox">
+                        <input type="radio" name="vehicle" value="Bike">Send Incremental Call<br>
+                    </div>
+                    <div class="checkbox">
+                        <input type="radio" name="vehicle" value="Bike">Send Individual Call<br>
+                    </div>
+                    <textarea id="text-area"></textarea>
+                    <input id="submit" type="submit" name="submit" value="Send"/>
+                </form>
+            </div>
+        </div>
+
         <script>
             //Get event title
 
@@ -37,7 +59,6 @@
             }
 
             var eventId = getQueryVariable('event_id');
-            console.log(eventId);
 
             $.ajax({
                 type: 'post',
@@ -49,8 +70,6 @@
                     withCredentials: false
                 },
                 success: function (data) {
-                    console.log('Success');
-                    console.log(data);
                     addData(data);
                 },
                 error: function () {
@@ -62,10 +81,8 @@
                 //Add page name
                 $('#hackathon-name').html(data.eventName);
                 //Add users
-                console.log(data);
                 const attendee = data.attendees;
                 const userList = document.getElementById('user-list');
-                console.log('Attendee: ' + attendee);
                 attendee.forEach(processMembers);
 
                 function processMembers(item, i, array) {
@@ -80,19 +97,36 @@
                     const name = document.createElement("H3");
                     name.innerText = array[i].first_name;
                     const userRightLink = document.createElement("A");
-                    userRightLink.href = '/call/' + data._id;
+                    userRightLink.href = '#';
+                    userRightLink.className = 'messageButton';
+                    userRightLink.setAttribute('data-featherlight', '#call-lightbox');
                     const button = document.createElement("BUTTON");
+                    button.id = array[i].id;
                     button.innerText = 'Message';
                     userRightLink.appendChild(button);
                     userLeft.appendChild(name);
                     userRight.appendChild(userRightLink);
-                    console.log(userItem);
                     userList.appendChild(userItem);
                 }
 
             }
+        </script>
 
-            test();
+        <script>
+
+            $(document).ready(function() {
+                setTimeout(function(){
+                    $(".messageButton").click(function() {
+                        var button = $(this).find("button");
+                        const id = button.attr('id');
+                        $('#send').attr('action', 'http://localhost:9001/text/' + id);
+                    });
+                }, 500);
+            });
+
+
+
+
         </script>
     </body>
 </html>

@@ -82,3 +82,54 @@ body{
   }
 
 }
+.lightboxes{
+  display: none;
+}
+#call-lightbox{
+  min-width: 400px;
+  h1{
+    font-weight: 300;
+    text-align: center;
+  }
+  form{
+    text-align: center;
+    width: 100%;
+    margin: 15px auto;
+    .checkbox{
+      display: inline-block;
+      input{
+        display: block;
+        margin: auto;
+        width: 30px;
+        height: 30px;
+        border-radius: 360px;
+      }
+      margin: 10px 10px 30px 0px;
+      font-family: Avenir, sans-serif;
+    }
+    #text-area{
+      display: block;
+      width: 100%;
+      height: 100px;
+      margin: auto;
+    }
+    #submit{
+      width: 40%;
+      font-size: 14px;
+      text-transform: uppercase;
+      border: 1px solid rgba(0,0,0,0.1);
+      background-color: transparent;
+      margin-top: 20px;
+      color: rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      padding: 10px 0px 10px 0px;
+    }
+    #submit:hover{
+      letter-spacing: 2px;
+      background-color: mediumspringgreen;
+      color: white;
+      border: none;
+    }
+  }
+}

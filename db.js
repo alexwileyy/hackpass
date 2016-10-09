@@ -26,7 +26,6 @@ module.exports.addEvent = (data, appID, cb) => {
     const newEvent = new eventTable(eventData);
     newEvent.save((err, event) => {
         if (err) {
-            console.log(event.id);
         }
         cb(event);
     });

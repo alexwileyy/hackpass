@@ -28,7 +28,18 @@ app.get('/', function(req, res){
 });
 
 //Twillio integration
-app.get('/call/:id', function(req, res){
+app.post('/text/:id', function(req, res){
+    const id = req.params.id;
+    console.log(id);
+    db.getUser(Number(id), (data) => {
+        function findNumber(num, id) {
+            return num["phone_number"] === id;
+        }
+        console.log(data.attendees.forEach(function(data, i, array){
+            data[i].find(findNumber);
+        }));
+    });
+
 
 });
 
@@ -60,7 +71,6 @@ app.get('/profile/user/:id', (req, res) => {
 app.post('/event/attendees', (req, res) => {
     console.log(req.body.eventID);
    db.getEvent(req.body.eventID, (event) => {
-       console.log(event);
        res.send(event);
    })
 });
