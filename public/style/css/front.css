@@ -116,7 +116,8 @@ body {
       border: none; }
 
 .qr {
-  height: 500px; }
+  height: 665px;
+  width: 400px !important; }
   .qr .login-content {
     position: absolute;
     top: 50%;
