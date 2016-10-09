@@ -44,10 +44,10 @@ module.exports.directMessage = (json, message) => {
 
 module.exports.multiMessage = (jsonArray, message) => {
 
-    jsonArray.forEach(function(json){
+    jsonArray.forEach(function(mobileNumber){
         twilio_client.messages.create({
             body: message,
-            to: json.mobileNumber,
+            to: mobileNumber,
             from: twilio_number // From a valid Twilio number
         }, function(err, message) {
 
