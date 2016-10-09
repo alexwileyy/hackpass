@@ -47,6 +47,15 @@ module.exports.getEvent = function(eventId, cb) {
   });
 };
 
+module.exports.getEventByAppId = function(appId, cb) {
+  eventTable.findOne({appId: appId}, function(err, event){
+      if(err) {
+          console.log(err);
+      }
+      cb(event);
+  });
+};
+
 module.exports.getUser = function(userId, cb) {
   eventTable.findOne({'attendees': {$elemMatch: {id: userId}}}, function(err, user){
       if(err){

@@ -140,9 +140,9 @@ app.post('/create_event', (req, res) => {
         });
 
     } else if(req.body.appIDLogin) {
-      db.getEvent(req.body.appIDLogin, function(event) {
+      db.getEventByAppId(req.body.appIDLogin, function(event) {
         if(event) {
-          res.redirect('organiser/?event_id=' + req.body.appIDLogin);
+          res.redirect('organiser/?event_id=' + event._id);
         } else {
           res.status(404).send('No such event!');
         }
