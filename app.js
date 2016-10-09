@@ -41,36 +41,38 @@ app.post('/text/:id', function(req, res){
     db.getUser(user, (data) => {
         //Do something with this data...
 
-        console.log();
-        console.log(req.body);
+        const numbers = [];
+        function getNumbers(data){
+            data.attendees.forEach(process);
+            function process(data, i, array) {
+                numbers.push(array[i].phone_number);
+              // console.log(array[i].phone_number);
+            }
+        }
+
         if(req.body.messageOp == 'broadcast'){
             //Send JSON with name and number over.
             console.log('broadcast');
-            const twillData = {
-                //Data
-            };
-            twill.multiMessage(twillData, req.body.message);
+            const twillDataBroadcast = numbers;
+            twill.multiMessage(twillDataBroadcast, req.body.message);
 
         }
         if(req.body.messageOp == 'increment'){
             //Send JSON with name and number over.
             console.log('increment');
-            const twillData = {
-                //data
-            };
-            twill.messageIncrementer(twillData, req.body.message, 4);
+            const twillDataIncrement = numbers;
+            twill.messageIncrementer(twillDataIncrement, req.body.message, 4);
         }
         if(req.body.messageOp == 'individual'){
             console.log('individual');
             console.log(data);
-            const number = data.attendees[index]["phone_number"]
+            const number = data.attendees[index]["phone_number"];
             const twillData = {
                 mobileNumber:  number
             };
             twill.directMessage(twillData, req.body.message);
-            res.redirect('organiser');
+            res.sendFile(path.join(__dirname, 'organiser.html'));
         }
-
     });
 
 
@@ -95,7 +97,7 @@ app.get('/organiser', (req, res) => {
 
 //User Profile Information
 app.get('/profile/user/:id', (req, res) => {
-   db.getUser(req.param.id, (data) => {
+   db.getUser(req.params.id, (data) => {
       res.send(data);
    });
 });
