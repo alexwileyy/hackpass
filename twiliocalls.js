@@ -26,6 +26,22 @@ module.exports.testMessage = (mobileNumber) => {
     });
 };
 
+module.exports.directMessage = (json, message) => {
+
+    twilio_client.messages.create({
+        body: message,
+        to: json.mobileNumber,
+        from: twilio_number // From a valid Twilio number
+    }, function(err, message) {
+
+        if (err) {
+            console.log(err);
+        }else{
+            console.log(message.sid);
+        }
+    });
+};
+
 module.exports.multiMessage = (jsonArray, message) => {
 
     jsonArray.forEach(function(json){
