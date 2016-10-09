@@ -56,6 +56,7 @@ app.post('/text/:id', function(req, res){
             console.log('broadcast');
             const twillDataBroadcast = getNumbers(data);
             twill.multiMessage(twillDataBroadcast, req.body.message);
+            res.sendFile(path.join(__dirname, 'sent.html'));
 
         }
         if(req.body.messageOp == 'increment'){
@@ -63,6 +64,7 @@ app.post('/text/:id', function(req, res){
             console.log('increment');
             const twillDataIncrement = getNumbers(data);
             twill.messageIncrementer(twillDataIncrement, req.body.message, 4);
+            res.sendFile(path.join(__dirname, 'sent.html'));
         }
         if(req.body.messageOp == 'individual'){
             console.log('individual');
