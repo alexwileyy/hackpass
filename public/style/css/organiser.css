@@ -109,11 +109,12 @@ body {
         width: 30px;
         height: 30px;
         border-radius: 360px; }
-    #call-lightbox form #text-area {
+    #call-lightbox form #message {
       display: block;
       width: 100%;
       height: 100px;
-      margin: auto; }
+      margin: auto;
+      padding: 10px; }
     #call-lightbox form #submit {
       width: 40%;
       font-size: 14px;

@@ -28,15 +28,16 @@
                 <h1>Message Centre</h1>
                 <form id="send" method="post" action="http://localhost:9001/text">
                     <div class="checkbox">
-                        <input type="radio" name="vehicle" value="Bike">Send Broadcast Call<br>
+                        <input type="radio" name="messageOp" value="broadcast">Send Broadcast Call<br>
                     </div>
                     <div class="checkbox">
-                        <input type="radio" name="vehicle" value="Bike">Send Incremental Call<br>
+                        <input type="radio" name="messageOp" value="increment">Send Incremental Call<br>
                     </div>
                     <div class="checkbox">
-                        <input type="radio" name="vehicle" value="Bike">Send Individual Call<br>
+                        <input type="radio" name="messageOp" value="individual">Send Individual Call<br>
                     </div>
-                    <textarea id="text-area"></textarea>
+                    <textarea id="message" name="message" value="message" placeholder="Enter your message..."></textarea>
+                    <input id="hidden" type="number" name="hidden" value=""/>
                     <input id="submit" type="submit" name="submit" value="Send"/>
                 </form>
             </div>
@@ -102,6 +103,7 @@
                     userRightLink.setAttribute('data-featherlight', '#call-lightbox');
                     const button = document.createElement("BUTTON");
                     button.id = array[i].id;
+                    button.setAttribute('index', i);
                     button.innerText = 'Message';
                     userRightLink.appendChild(button);
                     userLeft.appendChild(name);
@@ -119,7 +121,11 @@
                     $(".messageButton").click(function() {
                         var button = $(this).find("button");
                         const id = button.attr('id');
+                        const index = button.attr('index');
+                        console.log(index + ' ' + id);
                         $('#send').attr('action', 'http://localhost:9001/text/' + id);
+                        $('#hidden').val(index);
+
                     });
                 }, 500);
             });

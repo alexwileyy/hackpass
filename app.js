@@ -35,14 +35,36 @@ app.get('/myaccount', function(req, res){
 //Twillio integration
 app.post('/text/:id', function(req, res){
     const id = req.params.id;
-    console.log(id);
-    db.getUser(Number(id), (data) => {
-        function findNumber(num, id) {
-            return num["phone_number"] === id;
+    const user = Number(id);
+    const index = req.body.hidden;
+
+    db.getUser(user, (data) => {
+        //Do something with this data...
+
+        console.log(data.attendees[index]["phone_number"]);
+
+        if(req.body.broadcast == 'broadcast'){
+            //Send JSON with name and number over.
+            const twillData = {
+                //Data
+            };
+            twill.multiMessage(twillData, req.body.message);
+
         }
-        console.log(data.attendees.forEach(function(data, i, array){
-            data[i].find(findNumber);
-        }));
+        if(req.body.increment == 'increment'){
+            //Send JSON with name and number over.
+            const twillData = {
+                //data
+            };
+            twill.messageIncrementer(twillData, req.body.message, 4);
+        }
+        if(req.body.individual == 'individual'){
+            const twillData = {
+                //Some data
+            };
+            twill.directMessage(twillData, req.body.message);
+        }
+
     });
 
 
