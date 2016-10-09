@@ -82,14 +82,16 @@ module.exports.messageIncrementer = (jsonArray, message, increment) => {
 
 module.exports.autoMessageIncrementer = (jsonArray, message, increment, minutes) => {
    
-    return{
-        minutes : minutes,
-        messageIncrementer : module.exports.messageIncrementer(jsonArray, message, increment),
+    
+    
+    var messageIncrementer = module.exports.messageIncrementer(jsonArray, message, increment);
 
-        autoMessage : function(){
-            if ( this.messageIncrementer.sendMessage() ) setInterval(autoMessage(), this.minutes * 60 * 1000);
-        }
+    var autoMessage = function(){
+        if ( messageIncrementer.sendMessage() ) setInterval(autoMessage(), minutes * 60 * 1000);
     }
+
+    autoMessage();
+    
 
 }
 
