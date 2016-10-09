@@ -145,3 +145,23 @@ body{
     }
   }
 }
+
+.button{
+  width: 40%;
+  font-size: 14px;
+  text-transform: uppercase;
+  border: 1px solid rgba(0,0,0,0.1);
+  background-color: transparent;
+  margin-top: 30px;
+  color: rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+.button:hover{
+  letter-spacing: 2px;
+  background-color: mediumspringgreen;
+  color: white;
+  border: none;
+}

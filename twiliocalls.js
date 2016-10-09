@@ -87,8 +87,8 @@ module.exports.autoMessageIncrementer = (jsonArray, message, increment, minutes)
     var messageIncrementer = module.exports.messageIncrementer(jsonArray, message, increment);
 
     var autoMessage = function(){
-        if ( messageIncrementer.sendMessage() ) setInterval(autoMessage(), minutes * 60 * 1000);
-    }
+        if ( messageIncrementer.sendMessage() ) setTimeout(autoMessage, minutes * 60 * 1000);
+    };
 
     autoMessage();
     
