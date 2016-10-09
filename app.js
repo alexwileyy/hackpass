@@ -46,7 +46,6 @@ app.post('/text/:id', function(req, res){
             data.attendees.forEach(process);
             function process(data, i, array) {
                 numbers.push(array[i].phone_number);
-              // console.log(array[i].phone_number);
             }
             return numbers;
         }
@@ -63,7 +62,7 @@ app.post('/text/:id', function(req, res){
             //Send JSON with name and number over.
             console.log('increment');
             const twillDataIncrement = getNumbers(data);
-            twill.messageIncrementer(twillDataIncrement, req.body.message, 4);
+            twill.autoMessageIncrementer(twillDataIncrement, req.body.message, 2, 1);
             res.sendFile(path.join(__dirname, 'sent.html'));
         }
         if(req.body.messageOp == 'individual'){
@@ -108,7 +107,6 @@ app.get('/profile/user/:id', (req, res) => {
 
 //Get event attendees
 app.post('/event/attendees', (req, res) => {
-    console.log(req.body.eventID);
    db.getEvent(req.body.eventID, (event) => {
        res.send(event);
    })

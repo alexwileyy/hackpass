@@ -47,7 +47,7 @@ body {
       font-weight: 500;
       font-size: 30px;
       padding: 20px 0px; }
-    #users .panel-header img {
+    #users .panel-header #profile {
       position: absolute;
       top: 50%;
       left: 97%;
