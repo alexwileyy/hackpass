@@ -69,10 +69,10 @@ module.exports.messageIncrementer = (jsonArray, message, increment) => {
 
         sendMessage : function(){
             if (this.jsonArray.length > this.increment) {
-                module.exports.multiMessage(jsonArray.splice(0,this.increment), this.message);
+                module.exports.multiMessage(this.jsonArray.splice(0,this.increment), this.message);
                 return true;
             }else{
-                module.exports.multiMessage(jsonArray, this.message);
+                module.exports.multiMessage(this.jsonArray, this.message);
                 return false;
             }
         }
