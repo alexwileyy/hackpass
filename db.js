@@ -65,9 +65,6 @@ module.exports.getUser = function(userId, cb) {
   });
 };
 
-// const getAllUsers = (eventId, cb) => {
-//     eventTable.findOne
-// };
 
 
 // var exports = module.exports = {};

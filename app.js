@@ -72,12 +72,13 @@ app.post('/text/:id', function(req, res){
                 mobileNumber:  number
             };
             twill.directMessage(twillData, req.body.message);
-            res.sendFile(path.join(__dirname, 'organiser.html'));
+            res.sendFile(path.join(__dirname, 'sent.html'));
         }
     });
 
 
 });
+
 
 //Follows the home page when a valid APP ID and SECRET code have been entered.
 app.get('/event', function(req, res){
