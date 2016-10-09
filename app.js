@@ -41,28 +41,34 @@ app.post('/text/:id', function(req, res){
     db.getUser(user, (data) => {
         //Do something with this data...
 
-        console.log(data.attendees[index]["phone_number"]);
-
-        if(req.body.broadcast == 'broadcast'){
+        console.log();
+        console.log(req.body);
+        if(req.body.messageOp == 'broadcast'){
             //Send JSON with name and number over.
+            console.log('broadcast');
             const twillData = {
                 //Data
             };
             twill.multiMessage(twillData, req.body.message);
 
         }
-        if(req.body.increment == 'increment'){
+        if(req.body.messageOp == 'increment'){
             //Send JSON with name and number over.
+            console.log('increment');
             const twillData = {
                 //data
             };
             twill.messageIncrementer(twillData, req.body.message, 4);
         }
-        if(req.body.individual == 'individual'){
+        if(req.body.messageOp == 'individual'){
+            console.log('individual');
+            console.log(data);
+            const number = data.attendees[index]["phone_number"]
             const twillData = {
-                //Some data
+                mobileNumber:  number
             };
             twill.directMessage(twillData, req.body.message);
+            res.redirect('organiser');
         }
 
     });
