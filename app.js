@@ -27,6 +27,11 @@ app.get('/', function(req, res){
     res.sendFile(path.join(__dirname+'/index.html'));
 });
 
+//Standard entry point.
+app.get('/myaccount', function(req, res){
+    res.sendFile(path.join(__dirname+'/qrcode.html'));
+});
+
 //Twillio integration
 app.get('/call/:id', function(req, res){
 
