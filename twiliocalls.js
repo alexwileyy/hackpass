@@ -26,6 +26,22 @@ module.exports.testMessage = (mobileNumber) => {
     });
 };
 
+module.exports.directMessage = (json, message) => {
+
+    twilio_client.messages.create({
+        body: message,
+        to: json.mobileNumber,
+        from: twilio_number // From a valid Twilio number
+    }, function(err, message) {
+
+        if (err) {
+            console.log(err);
+        }else{
+            console.log(message.sid);
+        }
+    });
+};
+
 module.exports.multiMessage = (jsonArray, message) => {
 
     jsonArray.forEach(function(json){
@@ -52,14 +68,27 @@ module.exports.messageIncrementer = (jsonArray, message, increment) => {
 
         sendMessage : function(){
             if (this.jsonArray.length > this.increment) {
-                module.export.multiMessage(jsonArray.splice(0,this.increment), this.message);
+                module.exports.multiMessage(jsonArray.splice(0,this.increment), this.message);
                 return true;
             }else{
-                module.export.multiMessage(jsonArray, this.message);
+                module.exports.multiMessage(jsonArray, this.message);
                 return false;
             }
         }
     };
+
+}
+
+module.exports.autoMessageIncrementer = (jsonArray, message, increment, minutes) => {
+   
+    return{
+        minutes : minutes,
+        messageIncrementer : module.exports.messageIncrementer(jsonArray, message, increment),
+
+        autoMessage : function(){
+            if ( this.messageIncrementer.sendMessage() ) setInterval(autoMessage(), this.minutes * 60 * 1000);
+        }
+    }
 
 }
 
